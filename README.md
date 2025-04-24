@@ -62,9 +62,11 @@ source .venv/bin/activate
 3. Installer les dépendances avec uv
 ```bash
 # S'assurer que l'environnement virtuel est activé (vous devriez voir (.venv) en préfixe)
-uv add tkinter sqlite3  # déjà inclus avec Python, juste pour l'exemple
+uv add tkinter sqlite3
 uv sync
 ```
+
+> **Note** : Nous utilisons Python de base, donc ces dépendances font partie des librairies essentielles. Cela peut par contre être utile à savoir si jamais nous aurions besoin d'ajouter d'autres dépendances.
 
 ## Démarrage de l'application
 ```bash
