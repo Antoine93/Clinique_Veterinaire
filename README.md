@@ -85,6 +85,78 @@ L'application utilise SQLite avec les tables suivantes:
 - `quantite` INTEGER CHECK (quantite > 0)
 - Clé primaire composée de (`id_consultation`, `id_medicament`)
 
+## Schéma MySQL original
+
+```sql
+-- Supprime la base de données si elle existe déjà
+DROP DATABASE IF EXISTS projetsessiongr05;
+CREATE DATABASE projetsessiongr05;
+USE projetsessiongr05;
+-- Table Propriétaire
+DROP TABLE IF EXISTS Proprietaire;
+CREATE TABLE Proprietaire (
+    id_proprietaire INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    telephone VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    adresse VARCHAR(255)
+);
+-- Table Animal
+DROP TABLE IF EXISTS Animal;
+CREATE TABLE Animal (
+    id_animal INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    espece VARCHAR(50) NOT NULL,
+    race VARCHAR(50),
+    age INT CHECK (age >= 0),
+    poids DECIMAL(5,2),
+    id_proprietaire INT,
+    FOREIGN KEY (id_proprietaire) REFERENCES Proprietaire(id_proprietaire) ON DELETE CASCADE
+);
+-- Table Vétérinaire
+DROP TABLE IF EXISTS Veterinaire;
+CREATE TABLE Veterinaire (
+    id_veterinaire INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    specialisation VARCHAR(100),
+    telephone VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+-- Table Consultation
+DROP TABLE IF EXISTS Consultation;
+CREATE TABLE Consultation (
+    id_consultation INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    diagnostic VARCHAR(500) NOT NULL,
+    traitement VARCHAR(500),
+    id_animal INT NOT NULL,
+    id_veterinaire INT NOT NULL,
+    FOREIGN KEY (id_animal) REFERENCES Animal(id_animal),
+    FOREIGN KEY (id_veterinaire) REFERENCES Veterinaire(id_veterinaire)
+);
+-- Table Médicament
+DROP TABLE IF EXISTS Medicament;
+CREATE TABLE Medicament (
+    id_medicament INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    posologie VARCHAR(255)
+);
+-- Table Ordonnance (relation N:N entre Consultation et Médicament)
+DROP TABLE IF EXISTS Ordonnance;
+CREATE TABLE Ordonnance (
+    id_consultation INT,
+    id_medicament INT,
+    quantite INT CHECK (quantite > 0),
+    PRIMARY KEY (id_consultation, id_medicament),
+    FOREIGN KEY (id_consultation) REFERENCES Consultation(id_consultation) ON DELETE CASCADE,
+    FOREIGN KEY (id_medicament) REFERENCES Medicament(id_medicament) ON DELETE CASCADE
+);
+-- Création d'un index pour accélérer la recherche des consultations d'un vétérinaire
+CREATE INDEX idx_consultation_veterinaire ON Consultation(id_veterinaire);
+```
+
 ## Particularités SQLite vs MySQL
 
 - `AUTO_INCREMENT` (MySQL) est remplacé par `AUTOINCREMENT` (SQLite)
