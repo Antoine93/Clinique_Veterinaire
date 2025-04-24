@@ -11,7 +11,7 @@ Application permettant de gérer les clients, animaux, vétérinaires, consultat
 
 ### Installation de uv
 
-> **Note**: Ouvrir PowerShell en mode administrateur pour Windows ou un terminal pour macOS/Linux.
+> **Note** : Ouvrir PowerShell en mode administrateur pour Windows ou un terminal pour macOS/Linux.
 
 #### Windows
 ```bash
@@ -27,7 +27,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## Mise en place du projet
 
-> **Note**: Les commandes suivantes doivent être exécutées dans un terminal PowerShell (Windows) ou Bash (macOS/Linux).
+> **Note** : Les commandes suivantes doivent être exécutées dans un terminal PowerShell (Windows) ou Bash (macOS/Linux).
 
 1. Cloner le dépôt
 ```bash
@@ -41,7 +41,7 @@ git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire
 cd Clinique_Veterinaire # Ne pas oublier
 ```
 
-La commande `git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire` créera spécifiquement un dossier nommé "Clinique_Veterinaire" contenant le projet, au lieu d'utiliser le nom du dépôt par défaut.
+> **Note** : La commande `git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire` créera spécifiquement un dossier nommé "Clinique_Veterinaire" contenant le projet, au lieu d'utiliser le nom du dépôt par défaut.
 
 2. Création et activation de l'environnement virtuel
 ```bash
