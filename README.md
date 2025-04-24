@@ -73,12 +73,6 @@ uv sync
 uv run app.py
 ```
 
-## Démarrage de l'application
-
-```bash
-uv run app.py
-```
-
 ## Fonctionnalités
 
 - Gestion des propriétaires
