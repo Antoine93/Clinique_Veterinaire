@@ -7,7 +7,7 @@ Application permettant de gérer les clients, animaux, vétérinaires, consultat
 - uv ou pip (gestionnaire de dépendance)
 - terminal comme powershell 7.5 pour les cli
 
-*Nous utiliserons uv car plus performant
+> **Note** : Nous utiliserons uv car plus performant
 
 ### Installation de uv
 
