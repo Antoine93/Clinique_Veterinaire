@@ -29,13 +29,18 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 > **Note** : Les commandes suivantes doivent être exécutées dans un terminal PowerShell (Windows) ou Bash (macOS/Linux).
 
-1. Cloner le dépôt
+1. Avant toute chose
 ```bash
 # Naviguer vers un dossier où vous souhaitez créer le projet (ex: Documents)
 cd C:\Users\VotreNom\Documents  # Exemple pour Windows
 # ou
 cd ~/Documents  # Exemple pour macOS/Linux
+```
 
+> **Note** : Le dépôt du projet sera cloné ('téléchargé', si on veut) dans le répertoire dans lequel les instructions en lignes de commandes sont exécutées
+
+2. Cloner le dépôt
+```bash
 # Cloner le dépôt dans un dossier nommé "Clinique_Veterinaire"
 git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire
 cd Clinique_Veterinaire # Ne pas oublier
@@ -43,7 +48,7 @@ cd Clinique_Veterinaire # Ne pas oublier
 
 > **Note** : La commande `git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire` créera spécifiquement un dossier nommé "Clinique_Veterinaire" contenant le projet, au lieu d'utiliser le nom du dépôt par défaut.
 
-2. Création et activation de l'environnement virtuel
+3. Création et activation de l'environnement virtuel
 ```bash
 # S'assurer d'être dans le dossier du projet
 # Créer un environnement virtuel (exécuter dans le dossier du projet)
@@ -59,7 +64,7 @@ source .venv/bin/activate
 # Le nom de l'environnement (.venv) devrait apparaître en préfixe du prompt de commande
 ```
 
-3. Installer les dépendances avec uv
+4. Installer les dépendances avec uv
 ```bash
 # S'assurer que l'environnement virtuel est activé (vous devriez voir (.venv) en préfixe)
 uv add tkinter sqlite3
