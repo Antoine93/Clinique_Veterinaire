@@ -4,26 +4,78 @@ Application permettant de gérer les clients, animaux, vétérinaires, consultat
 
 ## Prérequis
 
-- Python 3.13+
-- Système de base de données SQLite (inclus dans Python)
+- uv ou pip (gestionnaire de dépendance)
+- terminal comme powershell 7.5 pour les cli
 
-## Installation
+*Nous utiliserons uv car plus performant
+
+### Installation de uv
+
+> **Note**: Ouvrir PowerShell en mode administrateur pour Windows ou un terminal pour macOS/Linux.
+
+#### Windows
+```bash
+# Télécharger et installer uv avec PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+#### macOS/Linux
+```bash
+# Télécharger et installer uv avec curl
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+## Mise en place du projet
+
+> **Note**: Les commandes suivantes doivent être exécutées dans un terminal PowerShell (Windows) ou Bash (macOS/Linux).
 
 1. Cloner le dépôt
-```
-git clone https://github.com/Antoine93/Clinique_Veterinaire
-cd clinique-veterinaire
+```bash
+# Naviguer vers un dossier où vous souhaitez créer le projet (ex: Documents)
+cd C:\Users\VotreNom\Documents  # Exemple pour Windows
+# ou
+cd ~/Documents  # Exemple pour macOS/Linux
+
+# Cloner le dépôt dans un dossier nommé "Clinique_Veterinaire"
+git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire
+cd Clinique_Veterinaire # Ne pas oublier
 ```
 
-2. Installer les dépendances avec uv
+La commande `git clone https://github.com/Antoine93/Clinique_Veterinaire Clinique_Veterinaire` créera spécifiquement un dossier nommé "Clinique_Veterinaire" contenant le projet, au lieu d'utiliser le nom du dépôt par défaut.
+
+2. Création et activation de l'environnement virtuel
+```bash
+# S'assurer d'être dans le dossier du projet
+# Créer un environnement virtuel (exécuter dans le dossier du projet)
+uv venv --python 3.13.1
+
+# Activer l'environnement virtuel
+# Sur Windows (PowerShell):
+.venv\Scripts\activate
+# Sur macOS/Linux (Bash/Zsh):
+source .venv/bin/activate
+
+# Vérifier que l'environnement est activé
+# Le nom de l'environnement (.venv) devrait apparaître en préfixe du prompt de commande
 ```
-uv add tkinter sqlite3  (techniquement déjà inclus avec Python)
+
+3. Installer les dépendances avec uv
+```bash
+# S'assurer que l'environnement virtuel est activé (vous devriez voir (.venv) en préfixe)
+uv add tkinter sqlite3  # déjà inclus avec Python, juste pour l'exemple
 uv sync
 ```
 
 ## Démarrage de l'application
-
+```bash
+# S'assurer que l'environnement virtuel est activé
+# Se placer dans le répertoire du projet si ce n'est pas déjà fait
+uv run app.py
 ```
+
+## Démarrage de l'application
+
+```bash
 uv run app.py
 ```
 
